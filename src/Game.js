@@ -6,6 +6,7 @@ import Cucumber from "./Cucumber";
 import Puddle from "./Puddle";
 import Ground from "./Ground";
 import Cloud from "./Cloud";
+import Bird from "./Bird";
 
 export default class {
   constructor() {
@@ -26,6 +27,8 @@ export default class {
     this.speed = 100;
     this.lastDecoration = 0;
     this.lastObstacle = 0;
+    this.lastCloud = 0;
+    this.lastBird = 0;
     this.score = 0;
     this.bestScore = 0;
 
@@ -57,6 +60,7 @@ export default class {
         this.speed = 100;
         this.lastObstacle = 0;
         this.lastCloud = 0;
+        this.lastBird = 0;
         this.score = 0;
 
         this.obstacles = [];
@@ -75,6 +79,17 @@ export default class {
 
           this.decorations.push(
             new Cloud(this.renderer, this.lastDecoration,
+                      100 + Math.random() * 150)
+          );
+        }
+
+        this.lastBird++;
+
+        if (this.lastBird >= 7 && Math.random() > 0.5) {
+          this.lastBird = 0;
+
+          this.decorations.push(
+            new Bird(this.renderer, this.lastDecoration,
                       100 + Math.random() * 150)
           );
         }
