@@ -1,12 +1,15 @@
+import Fish from "./Fish";
+
 let vertexBuffer = null;
 
 export default class {
-  constructor(renderer, x, y) {
+  constructor(renderer, game, x, y) {
     this.renderer = renderer;
+    this.game = game;
 
     this.vertices = new Float32Array([
       x, y,
-      2.0, 0.0
+      2.0, 1.0
     ]);
 
     if (!vertexBuffer) {
@@ -17,6 +20,9 @@ export default class {
 
     this.x = x;
     this.y = y;
+
+    this.launch = Math.random() * 1000;
+    this.launched = false;
   }
 
   updateBuffer() {
@@ -29,6 +35,13 @@ export default class {
   update(speed) {
     this.x -= speed / 15;
     this.vertices[0] = Math.round(this.x);
+
+    this.launch -= TIME_STEP;
+
+    if (!this.launched && this.launch <= 0) {
+      this.game.bonuses.push(new Fish(this.renderer, this.x, this.y - 50));
+      this.launched = true;
+    }
   }
 
   draw() {

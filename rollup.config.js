@@ -26,7 +26,7 @@ export default {
       TILE_SIZE: '16.0',
       TILES_TEXTURE: 'textures/tiles.png',
       TILES_TEXTURE_WIDTH: '64.0',
-      TILES_TEXTURE_HEIGHT: '16.0',
+      TILES_TEXTURE_HEIGHT: '32.0',
 
       UP:       '0b0000001',
       DOWN:     '0b0000010',

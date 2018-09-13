@@ -6,7 +6,7 @@ export default class {
 
     this.vertices = new Float32Array([
       x, y,
-      2.0, 0.0
+      0.0, 1.0
     ]);
 
     if (!vertexBuffer) {

@@ -5,8 +5,8 @@ export default class {
     this.renderer = renderer;
 
     this.vertices = new Float32Array([
-      x, y,
-      2.0, 0.0
+      Math.round(x), Math.round(y),
+      1.0, 1.0
     ]);
 
     if (!vertexBuffer) {
@@ -27,7 +27,7 @@ export default class {
   }
 
   update(speed) {
-    this.x -= speed / 15;
+    this.x -= speed / 30;
     this.vertices[0] = Math.round(this.x);
   }
 

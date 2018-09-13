@@ -12,7 +12,7 @@ export default class {
     this.canvas.height = SCREEN_HEIGHT;
 
     this.gl = this.canvas.getContext('webgl');
-    this.gl.clearColor(0.53, 0.8, 0.98, 1.0);
+    this.gl.clearColor(0.0, 0.63, 1.0, 1.0);
     this.gl.enable(this.gl.BLEND);
 
     this.canvasContainer.appendChild(this.canvas);
@@ -82,5 +82,13 @@ export default class {
     this.gl.bindBuffer(this.gl.ARRAY_BUFFER, vertexBuffer);
     this.shader.use();
     this.gl.drawArrays(this.gl.POINTS, 0, 1);
+  }
+
+  drawText(text, x, y, offset = 4) {
+    this.textContext.fillStyle = 'black';
+    this.textContext.fillText(text, x - offset, y - offset);
+
+    this.textContext.fillStyle = 'white';
+    this.textContext.fillText(text, x, y);
   }
 }
